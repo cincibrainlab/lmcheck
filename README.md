@@ -21,5 +21,5 @@ The script also checks if the license server is down and prints a message in bri
 
 1. Clone or download the repository.
 2. Modify the script to check the usage for the desired license by changing the argument to the `-f` option in the `lmutil lmstat -a -f` command. In the current script, the license checked is `MATLAB`.
-3. Modify the institution name
+3. Add license filename if on floating server by specifying as input or under server_arg
 4. Run the script using the command `./license_checker.sh`.
