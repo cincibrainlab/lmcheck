@@ -14,7 +14,8 @@ The script also checks if the license server is down and prints a message in bri
 * cd <Matlab Directory>, i.e. /opt/matlab/R2021
 * wget https://ssd.mathworks.com/supportfiles/downloads/R2022b/license_manager/R2022b/daemons/glnxa64/mathworks_network_license_manager_glnxa64.zip
 * unzip files
-* sudo apt-get install lsb --fix-missing
+* sudo apt-get install lsb --fix-missing 
+* or see https://www.mathworks.com/matlabcentral/answers/472505-licence-manager-under-debian-buster-10-0
 
 ## Usage
 
