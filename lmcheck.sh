@@ -2,7 +2,7 @@
 # Print the rainbow-colored script title
 printf "\n\n\e[38;5;196mC\e[38;5;202mC\e[38;5;226mH\e[38;5;118mM\e[38;5;87mC\e[38;5;27m License Checker\e[0m\n"
 
-  # Check if an argument for the license server was provided
+  # Check if an argument for the license file was provided
   if [ $# -eq 1 ]; then
     server_arg="$1"
   else
@@ -26,7 +26,7 @@ printf "\e[1;34m%-${user_width}s | %-${host_width}s | %-${disp_width}s | %s\n" \
   if [[ -z "$server_arg" ]]; then
     usage_info=$(./lmutil lmstat -a -f MATLAB)
   else
-    usage_info=$(./lmutil lmstat -a -f MATLAB -s $server_arg)
+    usage_info=$(./lmutil lmstat -a -f MATLAB -c $server_arg)
   fi
 
 # ./lmutil lmstat -a -f MATLAB | while read -r line; do
