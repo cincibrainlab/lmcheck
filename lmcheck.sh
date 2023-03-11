@@ -9,8 +9,17 @@ printf "\n\n\e[38;5;196mC\e[38;5;202mC\e[38;5;226mH\e[38;5;118mM\e[38;5;87mC\e[3
     server_arg=""
   fi
 
+  # Parse the license usage information from lmutil lmstat -a
+  if [[ -z "$server_arg" ]]; then
+    usage_info=$(lmutil lmstat -a -f MATLAB)
+  else
+    usage_info=$(lmutil lmstat -a -f MATLAB -c $server_arg)
+  fi
+
+
+
 # Check if the license server is up
-if lmutil lmstat -a | grep -q "license server UP"; then
+if echo "$usage_info" | grep -q "license server UP"; then
   printf "\e[1;32mLicense Server is UP\e[0m\n"
 
 user_width=10
@@ -21,13 +30,6 @@ disp_width=15
 # Print the column headers in bright blue
 printf "\e[1;34m%-${user_width}s | %-${host_width}s | %-${disp_width}s | %s\n" \
 "User" "Host" "Display" "Checkout Time" | column -t -s '|'
-
-  # Parse the license usage information from lmutil lmstat -a
-  if [[ -z "$server_arg" ]]; then
-    usage_info=$(lmutil lmstat -a -f MATLAB)
-  else
-    usage_info=$(lmutil lmstat -a -f MATLAB -c $server_arg)
-  fi
 
 # ./lmutil lmstat -a -f MATLAB | while read -r line; do
 echo "$usage_info" | while read -r line; do
